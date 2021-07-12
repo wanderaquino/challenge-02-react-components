@@ -13,7 +13,6 @@ interface SideBarProps {
 }
 
 export function SideBar(props: SideBarProps) {
-  console.log(props);
   return (
     <nav className="sidebar">
       <span>Watch<p>Me</p></span>
