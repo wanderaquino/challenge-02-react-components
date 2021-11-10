@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { api } from './services/api';
 
 import './styles/global.scss';
@@ -54,9 +54,11 @@ export function App() {
     setSelectedGenreId(id);
   }
 
+  const handleClickButtonMemo = useCallback(id => handleClickButton(id), [selectedGenreId]);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'row' }}>
-      <SideBar genres={genres} selectedGenreId={selectedGenreId} handleClickButton={handleClickButton}/>
+      <SideBar genres={genres} selectedGenreId={selectedGenreId} handleClickButton={handleClickButtonMemo}/>
       <div className="container">
         <Header title={selectedGenre.title}></Header>
         <main>
